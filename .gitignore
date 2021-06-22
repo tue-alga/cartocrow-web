@@ -1,0 +1,8 @@
+bin/
+html/
+include/
+latex/
+lib/
+script/*.php
+test.html
+
