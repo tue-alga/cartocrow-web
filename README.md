@@ -2,6 +2,8 @@
 
 This repository contains the PHP web frontend of [CartoCrow](https://github.com/tue-alga/cartocrow), a framework for algorithms in cartographic visualization.
 
+> :warning: CartoCrow is still a **work in progress**  and should not be considered stable yet. In particular, the web frontend currently does not work with the newest version of CartoCrow. This will be fixed in the near future.
+
 ![image](https://user-images.githubusercontent.com/7533280/122963785-e3736100-d386-11eb-9d9f-8190184919ea.png)
 
 
