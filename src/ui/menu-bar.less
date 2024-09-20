@@ -1,0 +1,35 @@
+header {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	background-color: var(--menu-background-color);
+	border-bottom: 1px solid var(--border-color);
+	z-index: 1;
+
+	.menu-bar {
+		display: flex;
+		padding: 0;
+
+		.separator {
+			width: 1px;
+			background-color: var(--border-color);
+			margin: 12px 0;
+		}
+	}
+}
+
+.menu-button {
+	padding: 12px 18px;
+	cursor: default;
+	display: inline-block;
+	background-color: var(--menu-background-color);
+
+	&:hover {
+		background-color: var(--hovered-background-color);
+
+		#overlay & {
+			background-color: var(--menu-background-color);
+		}
+	}
+}

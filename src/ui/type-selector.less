@@ -1,0 +1,62 @@
+.menu-button {
+	&.type-selector {
+		position: relative;
+		padding: 12px 22px;
+		padding-left: 160px;
+		margin-left: 0;
+
+		&::before {
+			content: '›';
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			padding-top: 12px;
+			padding-left: 146px;
+			background-image: url('/assets/images/logo-small.svg');
+			@media (prefers-color-scheme: dark) {
+				background-image: url('/assets/images/logo-small-dark.svg');
+			}
+			background-size: 114px 30px;
+			background-position: 22px 8.7px;
+			background-repeat: no-repeat;
+		}
+
+		#overlay & {
+			border-right: 1px solid var(--border-color);
+		}
+
+		.flyout {
+			position: absolute;
+			left: 0;
+			top: 100%;
+			padding: 0 10px;
+			background-color: var(--menu-background-color);
+			border: 1px solid var(--border-color);
+			display: flex;
+
+			.map-list {
+				border-right: 1px solid var(--border-color);
+				padding-right: 50px;
+				display: flex;
+				flex-direction: column;
+				width: max-content;
+
+				.map-item {
+					margin: 10px 0;
+				}
+			}
+
+			.map-details {
+				padding-left: 20px;
+				width: 40em;
+				height: 20em;
+
+				.map-description {
+
+				}
+			}
+		}
+	}
+}
