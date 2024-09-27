@@ -10,8 +10,6 @@ import { MenuBar, MenuButton } from './ui/menu-bar';
 import { TypeSelector } from './ui/type-selector';
 
 class CartoCrow {
-	menu: MenuBar;
-
 	maps: Map[] = [];
 
 	constructor () {
@@ -19,20 +17,6 @@ class CartoCrow {
 		this.maps.push(new FlowMap());
 		this.maps.push(new SimpleSets());
 		this.loadMap(this.maps[0]);
-
-		this.menu = new MenuBar();
-		this.menu.$element.appendTo($('#header'));
-
-		this.menu.add(new TypeSelector(this.maps, (map: Map) => {
-			this.loadMap(map);
-		}));
-		this.menu.addSeparator();
-		this.menu.add(new MenuButton('Export', () => {
-			console.log('Exporting...');
-		}));
-		this.menu.add(new MenuButton('Help', () => {
-			console.log('Helping...');
-		}));
 
 		$('#overlay').on('click', (e: JQuery.ClickEvent) => {
 			if (e.target === e.currentTarget) {
@@ -44,6 +28,22 @@ class CartoCrow {
 	loadMap(map: Map) {
 		$('#side-panel-container').empty();
 		$('#side-panel-container').append(map.sidePanel.$element);
+
+		const menu = new MenuBar();
+		const $header = $('#header');
+		$header.empty();
+		menu.$element.appendTo($header);
+
+		menu.add(new TypeSelector(this.maps, map, (map: Map) => {
+			this.loadMap(map);
+		}));
+		menu.addSeparator();
+		menu.add(new MenuButton('Export', () => {
+			console.log('Exporting...');
+		}));
+		menu.add(new MenuButton('Help', () => {
+			console.log('Helping...');
+		}));
 	}
 };
 

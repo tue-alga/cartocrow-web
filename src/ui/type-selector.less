@@ -31,20 +31,25 @@
 			position: absolute;
 			left: 0;
 			top: 100%;
-			padding: 0 10px;
 			background-color: var(--menu-background-color);
 			border: 1px solid var(--border-color);
 			display: flex;
 
 			.map-list {
 				border-right: 1px solid var(--border-color);
-				padding-right: 50px;
 				display: flex;
 				flex-direction: column;
 				width: max-content;
+				align-items: stretch;
 
 				.map-item {
-					margin: 10px 0;
+					padding: 10px 0;
+					padding-left: 10px;
+					padding-right: 50px;
+
+					&.active {
+						background-color: var(--hovered-background-color);
+					}
 				}
 			}
 
