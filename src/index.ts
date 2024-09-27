@@ -7,10 +7,9 @@ import { NecklaceMap } from './maps/necklace-map';
 import { SimpleSets } from './maps/simple-sets';
 
 import { MenuBar, MenuButton } from './ui/menu-bar';
-import { SidePanel } from './ui/side-panel';
 import { TypeSelector } from './ui/type-selector';
 
-class CartoCrow { 
+class CartoCrow {
 	menu: MenuBar;
 
 	maps: Map[] = [];
@@ -25,7 +24,7 @@ class CartoCrow {
 		this.menu.$element.appendTo($('#header'));
 
 		this.menu.add(new TypeSelector(this.maps, (map: Map) => {
-			console.log('setting map type to ' + map.name);
+			this.loadMap(map);
 		}));
 		this.menu.addSeparator();
 		this.menu.add(new MenuButton('Export', () => {

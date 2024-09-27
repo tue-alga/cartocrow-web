@@ -5,15 +5,21 @@ import { MenuButton } from './menu-bar';
 
 export class TypeSelector extends MenuButton {
 
+	onMapSelected: (map: Map) => void;
+
 	constructor(maps: Map[], onMapSelected: (map: Map) => void) {
 		super(maps[0].name);
 		this.$element.addClass('type-selector');
+		this.onMapSelected = onMapSelected;
 
 		this.onClick(() => {
 			let $flyout = this.createFlyout(maps);
 			let $overlay = $('#overlay');
 			$overlay.empty();
-			let $buttonCopy = this.$element.clone();
+			let $buttonCopy = this.$element.clone()
+				.on('click', () => {
+					$overlay.removeClass('shown');
+				});
 			$overlay.append($buttonCopy);
 			$buttonCopy.append($flyout);
 			$overlay.addClass('shown');
@@ -34,6 +40,10 @@ export class TypeSelector extends MenuButton {
 				.appendTo($mapList);
 			$mapItem.on('mouseover', () => {
 				$mapDescription.html(map.description);
+			});
+			$mapItem.on('click', () => {
+				this.onMapSelected(map);
+				$('#overlay').removeClass('shown');
 			});
 		}
 
