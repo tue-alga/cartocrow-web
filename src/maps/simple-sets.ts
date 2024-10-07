@@ -7,7 +7,7 @@ export class SimpleSets implements Map {
 	sidePanel: SidePanel;
 
 	constructor() {
-		this.name = 'Simple Sets';
+		this.name = 'SimpleSets';
 		this.description = `<p>A method to visualize sets of items of different classes on a map.</p>`;
 
 		this.sidePanel = new SidePanel('');
