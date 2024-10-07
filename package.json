@@ -20,5 +20,9 @@
 		"build-production": "webpack --mode=production",
 		"watch": "webpack --mode=development --watch",
 		"dev-server": "webpack serve --open"
+	},
+	"dependencies": {
+		"express": "^4.21.0",
+		"tmp": "^0.2.3"
 	}
 }
