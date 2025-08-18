@@ -1,5 +1,5 @@
 header {
-	position: absolute;
+	position: fixed;
 	left: 0;
 	right: 0;
 	top: 0;
@@ -24,6 +24,12 @@ header {
 	cursor: default;
 	display: inline-block;
 	background-color: var(--menu-background-color);
+
+	a& {
+		cursor: pointer;
+		text-decoration: none;
+		color: inherit;
+	}
 
 	&:hover {
 		background-color: var(--hovered-background-color);

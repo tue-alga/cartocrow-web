@@ -4,17 +4,30 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, argv) => {
 	let config = {
-		entry: './src/index.ts',
+		entry: {
+			'landing-page': './src/landing-page.ts',
+			'app': './src/app.ts'
+		},
 		resolve: {
 			extensions: ['.ts', '.js']
 		},
 		output: {
-			filename: 'js/main.js',
 			path: path.resolve(__dirname, 'dist'),
 			clean: true
 		},
 		plugins: [
-			new HtmlWebpackPlugin()
+			new HtmlWebpackPlugin({
+				filename: 'index.html',
+				template: 'src/landing-page.html',
+				chunks: ['landing-page'],
+				favicon: 'assets/images/favicon.png'
+			}),
+			new HtmlWebpackPlugin({
+				filename: 'app/index.html',
+				template: 'src/app.html',
+				chunks: ['app'],
+				favicon: 'assets/images/favicon.png'
+			})
 		],
 		devServer: {
 			static: './dist'

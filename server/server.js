@@ -9,6 +9,7 @@ app.get('/api/cartocrow', (req, res) => {
 	const inputFileName = tmp.tmpNameSync({
 		'postfix': '.json'
 	});
+	const mapFileName = '/home/wsonke/Git/cartocrow-web/server/maps/europe.ipe';
 	const outputFileName = tmp.tmpNameSync({
 		'postfix': '.svg'
 	});
@@ -21,7 +22,7 @@ app.get('/api/cartocrow', (req, res) => {
 		return;
 	}
 	fs.writeFileSync(inputFileName, JSON.stringify(params));
-	const cartocrow = spawn('./cartocrow', [inputFileName, outputFileName],
+	const cartocrow = spawn('./cartocrow', [inputFileName, outputFileName, mapFileName],
 		{
 			'cwd': './server',
 			'timeout': 10000
@@ -37,7 +38,11 @@ app.get('/api/cartocrow', (req, res) => {
 	});
 	cartocrow.on('close', () => {
 		console.log('done!');
-		res.sendFile(outputFileName);
+		res.sendFile(outputFileName, {
+			headers: {
+				"Content-Type": 'image/svg+xml'
+			}
+		});
 	});
 });
 
