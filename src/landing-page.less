@@ -53,6 +53,26 @@ body {
 	background-position: center;
 }
 
+ol {
+	counter-reset: item;
+	list-style-type: none;
+
+	li {
+		&::before {
+			display: inline-block;
+			font-weight: 600;
+			content: counter(item) "  ";
+			text-align: right;
+			counter-increment: item;
+			width: 1em;
+			margin-left: -2em;
+			margin-right: 1em;
+		}
+	}
+}
+
+
+
 .button-row {
 	display: flex;
 	align-items: center;
