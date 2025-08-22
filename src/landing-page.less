@@ -1,0 +1,183 @@
+@import 'global.less';
+@import 'colors.less';
+@import 'ui/menu-bar.less';
+
+html {
+	&::before {
+		position: fixed;
+		content: '';
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		opacity: 10%;
+		background-image: url("/assets/images/crow-mark.svg");
+		@media (prefers-color-scheme: dark) {
+			filter: invert();
+			opacity: 18%;
+		}
+		background-position: bottom 26px right 28px;
+		background-repeat: no-repeat;
+		background-size: 120px;
+	}
+}
+
+body {
+	height: 100%;
+	margin: 0;
+}
+
+.landing-page-content {
+	position: absolute;
+	top: @headerHeight;
+	left: 0;
+	right: 0;
+	width: 100%;
+	max-width: 800px;
+	margin: auto;
+	padding: 20px;
+	padding-top: 15px;
+	box-sizing: border-box;
+}
+
+.cartocrow-logo {
+	width: 100%;
+	height: 150px;
+	margin: 25px 0;
+	background-image: url('/assets/images/logo-large.svg');
+	@media (prefers-color-scheme: dark) {
+		background-image: url('/assets/images/logo-large-dark.svg');
+	}
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+ol {
+	counter-reset: item;
+	list-style-type: none;
+
+	li {
+		&::before {
+			display: inline-block;
+			font-weight: 600;
+			content: counter(item) "  ";
+			text-align: right;
+			counter-increment: item;
+			width: 1em;
+			margin-left: -2em;
+			margin-right: 1em;
+		}
+	}
+}
+
+
+
+.button-row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	margin: 25px 0;
+
+	.button {
+		display: flex;
+		align-items: center;
+		background-color: var(--text-color);
+		color: var(--background-color);
+		text-decoration: none;
+		padding: 7px 12px;
+		font-weight: 600;
+		border-radius: 4px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+		&.github::before {
+			content: '';
+			position: relative;
+			width: 18px;
+			height: 18px;
+			margin-right: 8px;
+			background-image: url('/assets/images/github-mark-white.svg');
+			@media (prefers-color-scheme: dark) {
+				background-image: url('/assets/images/github-mark.svg');
+			}
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+	}
+}
+
+.map-gallery {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 120px;
+	gap: 40px;
+	margin: 25px 0;
+
+	.gallery-tile {
+		width: 100px;
+		height: 100px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+		background-size: cover;
+		background-repeat: no-repeat;
+		cursor: pointer;
+		opacity: 0.6;
+		transition: width 0.2s, height 0.2s, opacity 0.2s;
+
+		&.active {
+			width: 120px;
+			height: 120px;
+			cursor: auto;
+			opacity: 1;
+		}
+
+		&#necklace-tile {
+			background-image: url('/assets/images/map-type-necklace.svg');
+		}
+		&#flow-tile {
+			background-image: url('/assets/images/map-type-flow.svg');
+		}
+		&#chorematic-tile {
+			background-image: url('/assets/images/map-type-chorematic.svg');
+		}
+		&#mosaic-tile {
+			background-image: url('/assets/images/map-type-mosaic.svg');
+		}
+		&#rectangular-cartogram-tile {
+			background-image: url('/assets/images/map-type-rectangular-cartogram.svg');
+		}
+		&#simplesets-tile {
+			background-image: url('/assets/images/map-type-simplesets.svg');
+		}
+	}
+}
+
+.map-explanation {
+	img {
+		margin: auto;
+		display: block;
+	}
+
+	.references {
+		font-size: 80%;
+		opacity: 0.6;
+		list-style-type: none;
+		padding-left: 0;
+
+		li {
+			text-indent: 1.5em hanging;
+		}
+
+		&::before {
+			content: 'References';
+			font-weight: 600;
+		}
+	}
+}
+
+hr {
+	margin: 80px 0;
+	border: none;
+	border-top: 1px solid var(--border-color);
+}
